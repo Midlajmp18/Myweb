@@ -1,0 +1,24 @@
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
+
+# Define the /start command handler
+def start(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text('Hello! I am your advanced Telegram bot.')
+
+def main() -> None:
+    # Create an Updater and pass your bot's token
+    updater = Updater("YOUR_BOT_TOKEN")
+
+    # Get the dispatcher to register handlers
+    dispatcher = updater.dispatcher
+
+    # Register the command handler
+    dispatcher.add_handler(CommandHandler("start", start))
+
+    # Start the Bot
+    updater.start_polling()
+    updater.idle()
+
+if __name__ == '__main__':
+    main()
+
